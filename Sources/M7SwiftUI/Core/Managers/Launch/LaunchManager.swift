@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class LaunchManager {
+public class LaunchManager {
     
-    static let shared = LaunchManager()
+    public static let shared = LaunchManager()
     
     public func onStart() {
         

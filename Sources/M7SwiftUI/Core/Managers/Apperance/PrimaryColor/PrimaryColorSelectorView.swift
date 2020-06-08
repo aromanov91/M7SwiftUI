@@ -5,11 +5,12 @@
 //  Created by 18391981 on 19.05.2020.
 //  Copyright © 2020 romanov. All rights reserved.
 //
+
 /*
 import SwiftUI
 
-struct PrimaryColorSelectorView: View {
-    var body: some View {
+public struct PrimaryColorSelectorView: View {
+    public var body: some View {
         List {
             
             Button(action: {

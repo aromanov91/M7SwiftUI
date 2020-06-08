@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-final class ApperanceManager: ObservableObject {
+public class ApperanceManager: ObservableObject {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
@@ -21,15 +21,15 @@ final class ApperanceManager: ObservableObject {
     }()
     
     private enum Keys {
-        static let apperance = "Theme.Default"
+        public static let apperance = "Theme.Default"
     }
     
     public let cancellable: Cancellable
     public let defaults: UserDefaults
     
-    let objectWillChange = PassthroughSubject<Void, Never>()
+    public let objectWillChange = PassthroughSubject<Void, Never>()
     
-    init(defaults: UserDefaults = .standard) {
+    public init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         
         defaults.register(defaults: [

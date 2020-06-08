@@ -76,7 +76,7 @@ public struct M7Button<BestButton: View>: View {
     
     @State private var isPressed: Bool = false
     
-    init(buttonStyle: M7ButtonStyle = .secondary, size: M7ButtonSize = .l, round: M7ButtonRounded = .m, shadow: Bool = true, action: @escaping () -> Void, @ViewBuilder content: () -> BestButton) {
+    public init(buttonStyle: M7ButtonStyle = .secondary, size: M7ButtonSize = .l, round: M7ButtonRounded = .m, shadow: Bool = true, action: @escaping () -> Void, @ViewBuilder content: () -> BestButton) {
         self.action = action
         self.content = content()
         self.style = buttonStyle

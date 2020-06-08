@@ -5,14 +5,15 @@
 //  Created by 18391981 on 17.05.2020.
 //  Copyright © 2020 romanov. All rights reserved.
 //
+
 /*
 import SwiftUI
 
-struct AppearanceSettingsView: View {
+public struct AppearanceSettingsView: View {
     
    @EnvironmentObject var apperance: ApperanceManager
     
-    var body: some View {
+    public var body: some View {
         
         List {
             
@@ -35,4 +36,5 @@ struct AppearanceSettingsView: View {
         
     }
 }
+
 */

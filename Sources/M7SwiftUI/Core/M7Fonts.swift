@@ -10,11 +10,11 @@ import SwiftUI
 
 public class M7Fonts {
     
-    private struct Montserrat {
-        static let regular = "Montserrat-Regular"
-        static let medium = "Montserrat-Medium"
-        static let semibold = "Montserrat-SemiBold"
-        static let bold = "Montserrat-bold"
+    public struct Montserrat {
+        public static let regular = "Montserrat-Regular"
+        public static let medium = "Montserrat-Medium"
+        public static let semibold = "Montserrat-SemiBold"
+        public static let bold = "Montserrat-bold"
     }
     
     public static var largeTitle: Font { return Font.custom(Montserrat.bold, size: 34) }

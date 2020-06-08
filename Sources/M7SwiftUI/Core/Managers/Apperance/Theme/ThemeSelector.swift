@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct ThemeSelector: View {
+public struct ThemeSelector: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @EnvironmentObject var settings: ApperanceManager
     
-    var body: some View {
+    public var body: some View {
         List {
             
             HStack {

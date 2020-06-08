@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class M7Radius {
+public class M7Radius {
     
     public static var m: CGFloat {
         return M7Space.xs

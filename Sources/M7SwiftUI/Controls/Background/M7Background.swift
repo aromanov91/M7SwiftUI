@@ -19,7 +19,7 @@ public enum M7BackgroundPadding: Int, CaseIterable {
     case s
 }
 
-struct M7Background<BackgroundViewColor: View>: View {
+public struct M7Background<BackgroundViewColor: View>: View {
     
     private struct Constants {
         
@@ -48,7 +48,7 @@ struct M7Background<BackgroundViewColor: View>: View {
     
     public var paddingSize: CGFloat = 0
     
-    init(background: M7BackgroundColor = .primary,
+    public init(background: M7BackgroundColor = .primary,
          padding: M7BackgroundPadding = .m,
          @ViewBuilder content: () -> BackgroundViewColor) {
         
@@ -60,7 +60,7 @@ struct M7Background<BackgroundViewColor: View>: View {
         self.setPadding(padding)
     }
     
-    var body: some View {
+    public var body: some View {
         
         self.content
             .padding(.all, paddingSize)
