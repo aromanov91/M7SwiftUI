@@ -2,7 +2,7 @@
 //  M7Texttest.swift
 //  DSOneDemo
 //
-//  Created by 18391981 on 07.06.2020.
+//  Created by Alexander Romanov on 07.06.2020.
 //  Copyright © 2020 romanov. All rights reserved.
 //
 

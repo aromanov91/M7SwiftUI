@@ -2,7 +2,7 @@
 //  OneColors.swift
 //  DSOneDemo
 //
-//  Created by 18391981 on 16.05.2020.
+//  Created by Alexander Romanov on 16.05.2020.
 //  Copyright © 2020 romanov. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  M7Surface.swift
 //  DSOneDemo
 //
-//  Created by 18391981 on 14.05.2020.
+//  Created by Alexander Romanov on 14.05.2020.
 //  Copyright © 2020 romanov. All rights reserved.
 //
 
@@ -23,6 +23,8 @@ public enum M7SurfaceColor: Int, CaseIterable {
 }
 
 public enum M7SurfacePadding: Int, CaseIterable {
+    case xxxs
+    case xxs
     case m
     case s
 }
@@ -40,6 +42,8 @@ public struct M7Surface<Surface: View>: View {
         /// Size
         static var paddingM: CGFloat { return M7Paddings.all.m }
         static var paddingS: CGFloat { return M7Paddings.all.s }
+        static var paddingXXXS: CGFloat { return M7Paddings.all.xxxs }
+         static var paddingXXS: CGFloat { return M7Paddings.all.xxs }
         
         /// Radius
         static var radiusM: CGFloat { return M7Radius.m }
@@ -86,7 +90,7 @@ public struct M7Surface<Surface: View>: View {
         
         self.content
             .padding(.all, paddingSize)
-            .frame(minWidth: 0, maxWidth: .infinity)
+            //.frame(minWidth: 0, maxWidth: .infinity)
             .background(backgroundColor)
             .cornerRadius(M7Radius.m)
             .shadow(color: self.shadowStyle.color.opacity(self.shadowStyle.opacity),
@@ -117,6 +121,10 @@ public struct M7Surface<Surface: View>: View {
     
     private mutating func setPadding(_ padding: M7SurfacePadding) {
         switch padding {
+        case .xxxs:
+            self.paddingSize = Constants.paddingXXXS
+        case .xxs:
+            self.paddingSize = Constants.paddingXXS
         case .m:
             self.paddingSize = Constants.paddingM
         case .s:
