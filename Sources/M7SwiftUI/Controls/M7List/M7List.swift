@@ -33,7 +33,6 @@ public struct M7List<M7ListView: View>: View {
     }
     
     private let content: M7ListView
-
     
     public var backgroundColor: Color = Constants.colorPrimary
     
@@ -66,8 +65,6 @@ public struct M7List<M7ListView: View>: View {
 //            .frame(minWidth: 0, maxWidth: .infinity)
 //            .background(backgroundColor)
 //            .cornerRadius(M7Radius.m)
-            
-            
         }
         
     }
@@ -95,19 +92,62 @@ public struct M7List<M7ListView: View>: View {
     func setupNavigationViewStyle() {
         
         //UITableView.appearance().separatorStyle = .none
+        let standard = UINavigationBarAppearance()
+                   
+              standard.configureWithOpaqueBackground()
         
-        UITableViewHeaderFooterView.appearance().tintColor = UIColor.white
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [
+        //UITableViewHeaderFooterView.appearance().tintColor = UIColor.white
+        
+       standard.largeTitleTextAttributes = [
             
             .foregroundColor: UIColor.black,
             .font : UIFont(name:"Montserrat-Bold", size: 34)!]
         
-        UINavigationBar.appearance().titleTextAttributes = [
+        standard.titleTextAttributes = [
             .foregroundColor: UIColor.black,
             .font : UIFont(name: "Montserrat-Bold", size: 20)!]
+      
+
+        //standard.backgroundColor = .systemPink
+        //standard.titlePositionAdjustment = UIOffset(horizontal: -30, vertical: 0)
+        //standard.titleTextAttributes = [.foregroundColor: UIColor.white]
+          
+        let button = UIBarButtonItemAppearance(style: .plain)
+        button.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+        standard.buttonAppearance = button
+          
+        let done = UIBarButtonItemAppearance(style: .done)
+        done.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+        standard.doneButtonAppearance = done
         
-        UINavigationBarAppearance().titlePositionAdjustment = UIOffset(horizontal: 100, vertical: 30)
+        
+        standard.buttonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.systemBlue,
+                           .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
+        
+               standard.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.systemBlue,
+                           .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
+        
+       
+        
+          
+        UINavigationBar.appearance().standardAppearance = standard
+        
+//        let style = UINavigationBarAppearance()
+//
+//
+//
+//
+//
+//        UINavigationBar.appearance().standardAppearance.buttonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
+//                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
+//        UINavigationBar.appearance().standardAppearance.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
+//                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
+//
+//        UINavigationBar.appearance().standardAppearance = style
+        
+        
+
     }
     
     //     geometry.size.width >= CGFloat(375) ? M7Paddings.all.m :  M7Paddings.all.s
