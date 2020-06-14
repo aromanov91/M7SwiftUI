@@ -65,6 +65,8 @@ public struct M7List<M7ListView: View>: View {
 //            .frame(minWidth: 0, maxWidth: .infinity)
 //            .background(backgroundColor)
 //            .cornerRadius(M7Radius.m)
+            
+            
         }
         
     }
