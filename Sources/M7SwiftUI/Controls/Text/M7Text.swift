@@ -22,6 +22,11 @@ public enum M7TextStyles: Int, CaseIterable {
     case overline
 }
 
+//public enum M7TextColor: Int, CaseIterable {
+//
+//}
+
+
 public struct M7Text: View {
     
     private struct Constants {
