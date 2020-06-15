@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 public enum M7TextFieldHelperStyle {
     case none
     case helperText
@@ -51,14 +50,15 @@ public struct M7TextField: View {
                 if secure {
                     SecureField("", text: $text)
                 } else {
+                    
                     TextField("", text: $text, onEditingChanged: { focused in
                         self.focused = focused
-                    }
-                    )
+                    })
                 }
             }.padding()
-                .background(focused ? M7Colors.surface.tertiary : M7Colors.surface.secondary)
-                .cornerRadius(M7Radius.m)
+            
+                .background(focused ? M7Colors.surface.secondary : M7Colors.surface.tertiary)
+               .cornerRadius(M7Radius.m)
                 .font(M7Fonts.subtitle1)
             
             if helperText != "" {
