@@ -22,7 +22,8 @@ public struct M7TextField: View {
     @Binding public var helperText: String
     @Binding public var helperStyle: M7TextFieldHelperStyle
     
-    
+    public var leadingImage: String
+    public var trallingImage: String
     
     public var secure: Bool = false
     @State private var focused: Bool = false
@@ -30,11 +31,16 @@ public struct M7TextField: View {
     public init(placeholder: String,
                 text: Binding<String>,
                 helperText: Binding<String> = .constant(""),
-                helperStyle: Binding<M7TextFieldHelperStyle> = .constant(.none)) {
+                helperStyle: Binding<M7TextFieldHelperStyle> = .constant(.none),
+                leadingImage: String = "",
+                trallingImage: String = ""
+    ) {
         self.placeholder = placeholder
         self._text = text
         self._helperText = helperText
         self._helperStyle = helperStyle
+        self.leadingImage = leadingImage
+        self.trallingImage = trallingImage
     }
     
     public var body: some View {
@@ -47,18 +53,47 @@ public struct M7TextField: View {
             }
             
             VStack {
-                if secure {
-                    SecureField("", text: $text)
-                } else {
+                
+                HStack {
                     
-                    TextField("", text: $text, onEditingChanged: { focused in
-                        self.focused = focused
-                    })
+                    if leadingImage != "" {
+                        Image(leadingImage).frame(width: 20, height: 20)
+                    }
+                    
+                    if secure {
+                        SecureField("", text: $text)
+                    } else {
+                        
+                        TextField("", text: $text, onEditingChanged: { focused in
+                            self.focused = focused
+                        })
+                    }
+                    
+                    if trallingImage != "" {
+                        Image(trallingImage).frame(width: 20, height: 20)
+                    }
+                    
+                    if helperStyle == .errorText {
+                        Image("alert-circle").renderingMode(.template).foregroundColor(M7Colors.error).frame(width: 20, height: 20)
+                    }
+                    
+                    if helperStyle == .sussesText {
+                        Image("check").renderingMode(.template).foregroundColor(M7Colors.success).frame(width: 20, height: 20)
+                        
+    
+                    }
+                    
                 }
             }.padding()
-            
-                .background(focused ? M7Colors.surface.secondary : M7Colors.surface.tertiary)
-               .cornerRadius(M7Radius.m)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(focused ? M7Colors.primary : M7Colors.surface.primary, lineWidth: 4)
+                   
+                    
+            ).background(RoundedRectangle(cornerRadius: 12).fill(focused ? M7Colors.surface.primary : M7Colors.surface.secondary))
+                
+                
+                .cornerRadius(M7Radius.m)
                 .font(M7Fonts.subtitle1)
             
             if helperText != "" {
