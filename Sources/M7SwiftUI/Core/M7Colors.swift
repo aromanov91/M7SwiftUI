@@ -124,4 +124,10 @@ public class M7Colors {
     public static var warning: Color {
         return ApperanceManager.shared.apperance?.warning ?? Color.blue
     }
+    
+    
+    /// Link
+    public static var link: Color {
+        return ApperanceManager.shared.apperance?.primary ?? Color.blue
+    }
 }

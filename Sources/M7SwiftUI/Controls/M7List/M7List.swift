@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 public enum M7ListViewColor: Int, CaseIterable {
     case primary
@@ -18,7 +19,7 @@ public enum M7ListViewPadding: Int, CaseIterable {
     case s
 }
 
-public struct M7List<M7ListView: View>: View {
+public struct M7List<Content: View>: View {
     
     private struct Constants {
         
@@ -32,7 +33,7 @@ public struct M7List<M7ListView: View>: View {
         static var paddingS: CGFloat { return M7Paddings.all.s }
     }
     
-    private let content: M7ListView
+    private let content: Content
     
     public var backgroundColor: Color = Constants.colorPrimary
     
@@ -42,9 +43,11 @@ public struct M7List<M7ListView: View>: View {
     
     public var paddingSize: CGFloat = 0
     
+    //@ObservedObject private var keyboard = KeyboardResponder()
+    
     public init(background: M7ListViewColor = .primary,
          padding: M7ListViewPadding = .m,
-         @ViewBuilder content: () -> M7ListView) {
+         @ViewBuilder content: () -> Content) {
         
         self.content = content()
         self.padding = padding
@@ -67,7 +70,7 @@ public struct M7List<M7ListView: View>: View {
 //            .cornerRadius(M7Radius.m)
             
             
-        }
+        }.modifier(AdaptsToKeyboard())
         
     }
     
@@ -156,3 +159,58 @@ public struct M7List<M7ListView: View>: View {
     
 }
 
+
+//public class KeyboardResponder: ObservableObject {
+//    private var notificationCenter: NotificationCenter
+//    @Published private(set) var currentHeight: CGFloat = 0
+//
+//    public init(center: NotificationCenter = .default) {
+//        notificationCenter = center
+//        notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    deinit {
+//        notificationCenter.removeObserver(self)
+//    }
+//
+//    @objc public func keyBoardWillShow(notification: Notification) {
+//
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            currentHeight = keyboardSize.height
+//        }
+//    }
+//
+//    @objc public func keyBoardWillHide(notification: Notification) {
+//        currentHeight = 0
+//    }
+//}
+
+struct AdaptsToKeyboard: ViewModifier {
+    @State var currentHeight: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            content
+                .padding(.bottom, self.currentHeight)
+                .animation(.easeOut(duration: 0.16))
+                .onAppear(perform: {
+                    NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
+                        .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
+                        .compactMap { notification in
+                            notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
+                    }
+                    .map { rect in
+                        rect.height - geometry.safeAreaInsets.bottom
+                    }
+                    .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+
+                    NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
+                        .compactMap { notification in
+                            CGFloat.zero
+                    }
+                    .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+                })
+        }
+    }
+}

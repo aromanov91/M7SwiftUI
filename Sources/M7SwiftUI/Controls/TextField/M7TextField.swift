@@ -33,8 +33,7 @@ public struct M7TextField: View {
                 helperText: Binding<String> = .constant(""),
                 helperStyle: Binding<M7TextFieldHelperStyle> = .constant(.none),
                 leadingImage: String = "",
-                trallingImage: String = ""
-    ) {
+                trallingImage: String = "") {
         self.placeholder = placeholder
         self._text = text
         self._helperText = helperText
@@ -44,7 +43,6 @@ public struct M7TextField: View {
     }
     
     public var body: some View {
-        
         
         VStack {
             HStack {
@@ -80,15 +78,15 @@ public struct M7TextField: View {
                     if helperStyle == .sussesText {
                         Image("check").renderingMode(.template).foregroundColor(M7Colors.success).frame(width: 20, height: 20)
                         
-    
                     }
                     
                 }
+                
             }.padding()
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(focused ? M7Colors.primary : M7Colors.surface.primary, lineWidth: 4)
-                   
+                    
                     
             ).background(RoundedRectangle(cornerRadius: 12).fill(focused ? M7Colors.surface.primary : M7Colors.surface.secondary))
                 
@@ -114,7 +112,3 @@ public struct M7TextField: View {
         }
     }
 }
-//.padding()
-//.background(M7Colors.surface.secondary)
-//.cornerRadius(M7Radius.m)
-//.font(M7Fonts.subtitle1)

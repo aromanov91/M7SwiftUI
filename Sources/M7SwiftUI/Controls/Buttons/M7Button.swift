@@ -28,10 +28,10 @@ public enum M7ButtonSize{
     case m
 }
 
-public struct M7Button<BestButton: View>: View {
+public struct M7Button<Content: View>: View {
     
     let action: () -> Void
-    let content: BestButton
+    let content: Content
     
     private struct Constants {
         
@@ -76,15 +76,15 @@ public struct M7Button<BestButton: View>: View {
     
     @State private var isPressed: Bool = false
     
-    public init(buttonStyle: M7ButtonStyle = .secondary, size: M7ButtonSize = .l, round: M7ButtonRounded = .m, shadow: Bool = true, action: @escaping () -> Void, @ViewBuilder content: () -> BestButton) {
+    public init(style: M7ButtonStyle = .secondary, size: M7ButtonSize = .l, round: M7ButtonRounded = .m, shadow: Bool = true, action: @escaping () -> Void, @ViewBuilder content: () -> Content) {
         self.action = action
         self.content = content()
-        self.style = buttonStyle
+        self.style = style
         self.size = size
         self.round = round
         self.isShadow = shadow
 
-        setButtonStyle(buttonStyle)
+        setButtonStyle(style)
         setShadow(shadow)
         setSize(size)
         setRounded(round)

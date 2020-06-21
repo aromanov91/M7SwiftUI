@@ -30,7 +30,7 @@ public enum M7SurfacePadding: Int, CaseIterable {
 }
 
 @available(iOS 13.0, macOS 10.15, *)
-public struct M7Surface<Surface: View>: View {
+public struct M7Surface<Content: View>: View {
     
     private struct Constants {
         
@@ -57,7 +57,7 @@ public struct M7Surface<Surface: View>: View {
         static var shadowZ4: M7Shadow.shadowCreate { return M7Shadow.z4 }
     }
     
-    private let content: Surface
+    private let content: Content
     
     public var shadowStyle = Constants.shadowZ0
     
@@ -74,7 +74,7 @@ public struct M7Surface<Surface: View>: View {
     public init(elevation: M7SurfaceElevation = .z0,
          background: M7SurfaceColor = .primary,
          padding: M7SurfacePadding = .m,
-         @ViewBuilder content: () -> Surface) {
+         @ViewBuilder content: () -> Content) {
         
         self.content = content()
         self.elevation = elevation

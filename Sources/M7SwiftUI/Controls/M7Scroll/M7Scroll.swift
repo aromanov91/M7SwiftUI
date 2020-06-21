@@ -1,25 +1,31 @@
 //
-//  M7Background.swift
-//  DSOneDemo
+//  File.swift
+//  
 //
-//  Created by Alexander Romanov on 07.06.2020.
-//  Copyright © 2020 romanov. All rights reserved.
+//  Created by 18391981 on 17.06.2020.
+//
+
+//
+//  File.swift
+//
+//
+//  Created by 18391981 on 14.06.2020.
 //
 
 import SwiftUI
 
-public enum M7BackgroundColor: Int, CaseIterable {
+public enum M7ScrollViewColor: Int, CaseIterable {
     case primary
     case secondary
     case tertiary
 }
 
-public enum M7BackgroundPadding: Int, CaseIterable {
+public enum M7ScrollViewPadding: Int, CaseIterable {
     case m
     case s
 }
 
-public struct M7Background<Content: View>: View {
+public struct M7Scroll<Content: View>: View {
     
     private struct Constants {
         
@@ -31,42 +37,43 @@ public struct M7Background<Content: View>: View {
         /// Size
         static var paddingM: CGFloat { return M7Paddings.all.m }
         static var paddingS: CGFloat { return M7Paddings.all.s }
-        
-        /// Radius
-        static var radiusM: CGFloat { return M7Radius.m }
-        static var radiusS: CGFloat { return M7Radius.s }
     }
     
     private let content: Content
-
     
     public var backgroundColor: Color = Constants.colorPrimary
     
-    public var background: M7BackgroundColor
+    public var background: M7ScrollViewColor
     
-    public var padding: M7BackgroundPadding
+    public var padding: M7ScrollViewPadding
     
     public var paddingSize: CGFloat = 0
     
-    public init(background: M7BackgroundColor = .primary,
-         padding: M7BackgroundPadding = .m,
+    public init(background: M7ScrollViewColor = .primary,
+         padding: M7ScrollViewPadding = .m,
          @ViewBuilder content: () -> Content) {
         
         self.content = content()
         self.padding = padding
         self.background = background
+        
+        //setupNavigationViewStyle()
 
-        self.setBackground(background)
-        self.setPadding(padding)
+        //self.setBackground(background)
+        //self.setPadding(padding)
     }
     
     public var body: some View {
         
+        ScrollView {
+        
         self.content
-            .padding(.all, paddingSize)
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .background(backgroundColor)
-            .cornerRadius(M7Radius.m)
+//            .padding(.all, paddingSize)
+//            .frame(minWidth: 0, maxWidth: .infinity)
+//            .background(backgroundColor)
+//            .cornerRadius(M7Radius.m)
+
+        }.modifier(AdaptsToKeyboard())//.padding(.bottom, keyboard.currentHeight)
         
     }
     
@@ -90,7 +97,6 @@ public struct M7Background<Content: View>: View {
         }
     }
     
-    //     geometry.size.width >= CGFloat(375) ? M7Paddings.all.m :  M7Paddings.all.s
-    
 }
+
 
