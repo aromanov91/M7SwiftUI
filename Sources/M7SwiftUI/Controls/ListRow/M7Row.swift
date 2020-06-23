@@ -54,9 +54,6 @@ public struct M7Row: View {
                     
                 } else if type == .radio {
                     
-                    
-                    
-                    
                     M7Text(text, style: .subtitle1)
                     
                     Spacer()

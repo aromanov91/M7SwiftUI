@@ -24,23 +24,23 @@ public struct M7SelectModal: View {
         
         ZStack {
             
-            M7Button(action: {
+            Button(action: {
                 self.showModal.toggle()
-                self.selected = "sadasd"
-                
+               
             }) {
-                Text(self.selected)
-            }.sheet(isPresented: $showModal) {
-                ModalSelect(data: self.selectionRows, selected: self.$selected, showModal: self.$showModal)
-            }
-            
-            ZStack {
-                if showModal {
-                    ModalSelect(data: selectionRows,
-                                selected: $selected,
-                                showModal: $showModal)
+                M7Text(self.selected)
+                Spacer()
+                Image("chevron-down")
                     
-                }
+            }.frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            .frame(height: 52)
+            .background(M7Colors.surface.secondary)
+            .cornerRadius(M7Radius.m)
+            .foregroundColor(M7Colors.onSurface.highEmphasis)
+
+            .sheet(isPresented: $showModal) {
+                ModalSelect(data: self.selectionRows, selected: self.$selected, showModal: self.$showModal)
             }
             
         }
