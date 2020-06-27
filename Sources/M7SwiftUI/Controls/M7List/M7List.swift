@@ -46,15 +46,15 @@ public struct M7List<Content: View>: View {
     //@ObservedObject private var keyboard = KeyboardResponder()
     
     public init(background: M7ListViewColor = .primary,
-         padding: M7ListViewPadding = .m,
-         @ViewBuilder content: () -> Content) {
+                padding: M7ListViewPadding = .m,
+                @ViewBuilder content: () -> Content) {
         
         self.content = content()
         self.padding = padding
         self.background = background
         
         setupNavigationViewStyle()
-
+        
         //self.setBackground(background)
         //self.setPadding(padding)
     }
@@ -62,12 +62,12 @@ public struct M7List<Content: View>: View {
     public var body: some View {
         
         List {
-        
-        self.content
-//            .padding(.all, paddingSize)
-//            .frame(minWidth: 0, maxWidth: .infinity)
-//            .background(backgroundColor)
-//            .cornerRadius(M7Radius.m)
+            
+            self.content
+            //            .padding(.all, paddingSize)
+            //            .frame(minWidth: 0, maxWidth: .infinity)
+            //            .background(backgroundColor)
+            //            .cornerRadius(M7Radius.m)
             
             
         }.modifier(AdaptsToKeyboard())
@@ -98,13 +98,13 @@ public struct M7List<Content: View>: View {
         
         //UITableView.appearance().separatorStyle = .none
         let standard = UINavigationBarAppearance()
-                   
-              standard.configureWithOpaqueBackground()
+        
+        standard.configureWithOpaqueBackground()
         
         
         //UITableViewHeaderFooterView.appearance().tintColor = UIColor.white
         
-       standard.largeTitleTextAttributes = [
+        standard.largeTitleTextAttributes = [
             
             .foregroundColor: UIColor.black,
             .font : UIFont(name:"Montserrat-Bold", size: 34)!]
@@ -112,47 +112,47 @@ public struct M7List<Content: View>: View {
         standard.titleTextAttributes = [
             .foregroundColor: UIColor.black,
             .font : UIFont(name: "Montserrat-Bold", size: 20)!]
-      
-
+        
+        
         //standard.backgroundColor = .systemPink
         //standard.titlePositionAdjustment = UIOffset(horizontal: -30, vertical: 0)
         //standard.titleTextAttributes = [.foregroundColor: UIColor.white]
-          
+        
         let button = UIBarButtonItemAppearance(style: .plain)
         button.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
         standard.buttonAppearance = button
-          
+        
         let done = UIBarButtonItemAppearance(style: .done)
         done.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
         standard.doneButtonAppearance = done
         
         
         standard.buttonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.systemBlue,
-                           .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
+                                                                 .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
         
-               standard.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.systemBlue,
-                           .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
+        standard.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.systemBlue,
+                                                                     .font : UIFont(name:"Montserrat-SemiBold", size: 16)!]
         
-       
         
-          
+        
+        
         UINavigationBar.appearance().standardAppearance = standard
         
-//        let style = UINavigationBarAppearance()
-//
-//
-//
-//
-//
-//        UINavigationBar.appearance().standardAppearance.buttonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
-//                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
-//        UINavigationBar.appearance().standardAppearance.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
-//                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
-//
-//        UINavigationBar.appearance().standardAppearance = style
+        //        let style = UINavigationBarAppearance()
+        //
+        //
+        //
+        //
+        //
+        //        UINavigationBar.appearance().standardAppearance.buttonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
+        //                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
+        //        UINavigationBar.appearance().standardAppearance.doneButtonAppearance.normal.titleTextAttributes = [ .foregroundColor: UIColor.black,
+        //                   .font : UIFont(name:"Montserrat-Bold", size: 20)!]
+        //
+        //        UINavigationBar.appearance().standardAppearance = style
         
         
-
+        
     }
     
     //     geometry.size.width >= CGFloat(375) ? M7Paddings.all.m :  M7Paddings.all.s
@@ -188,7 +188,7 @@ public struct M7List<Content: View>: View {
 
 struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
-
+    
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             content
@@ -204,7 +204,7 @@ struct AdaptsToKeyboard: ViewModifier {
                         rect.height - geometry.safeAreaInsets.bottom
                     }
                     .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
-
+                    
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
                         .compactMap { notification in
                             CGFloat.zero

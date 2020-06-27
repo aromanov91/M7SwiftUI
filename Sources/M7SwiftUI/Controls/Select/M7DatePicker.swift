@@ -28,9 +28,10 @@ public struct M7DatePicker: View {
                 self.showModal.toggle()
                
             }) {
-                M7Text("\(date)").onAppear {
-                    date
-                }
+                M7Text("\(date)")
+//                    .onAppear {
+//                    date
+//                }
                 Spacer()
                 Image("calendar")
                     
@@ -66,7 +67,7 @@ public struct DateModalSelect: View {
             
      
             
-            DatePicker("", selection: $date, in: ...Date(), displayedComponents: .date)
+            DatePicker("", selection: $date, in: ...Date(), displayedComponents: .date).labelsHidden()
             
        
             
