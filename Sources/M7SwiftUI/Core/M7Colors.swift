@@ -82,12 +82,12 @@ public class M7Colors {
         
         /// Medium Emphasis
         public static var secondary: Color {
-            return ApperanceManager.shared.apperance?.surfaceSecondary ?? Color.white
+            return ApperanceManager.shared.apperance?.surfaceSecondary ?? Color.gray.opacity(0.2)
         }
         
         /// Disabled
         public static var tertiary: Color {
-            return ApperanceManager.shared.apperance?.surfaceTertiary ?? Color.gray
+            return ApperanceManager.shared.apperance?.surfaceTertiary ?? Color.gray.opacity(0.4)
         }
     }
     
@@ -112,17 +112,17 @@ public class M7Colors {
     
     /// Error
     public static var error: Color {
-        return ApperanceManager.shared.apperance?.error ?? Color.blue
+        return ApperanceManager.shared.apperance?.error ?? Color.red
     }
     
     /// Success
     public static var success: Color {
-        return ApperanceManager.shared.apperance?.success ?? Color.blue
+        return ApperanceManager.shared.apperance?.success ?? Color.green
     }
     
     /// Warning
     public static var warning: Color {
-        return ApperanceManager.shared.apperance?.warning ?? Color.blue
+        return ApperanceManager.shared.apperance?.warning ?? Color.yellow
     }
     
     

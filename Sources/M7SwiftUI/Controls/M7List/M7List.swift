@@ -186,10 +186,10 @@ public struct M7List<Content: View>: View {
 //    }
 //}
 
-struct AdaptsToKeyboard: ViewModifier {
+public struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         GeometryReader { geometry in
             content
                 .padding(.bottom, self.currentHeight)

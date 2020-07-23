@@ -28,7 +28,7 @@ public struct M7TextField: View {
     public var secure: Bool = false
     @State private var focused: Bool = false
     
-    public init(placeholder: String,
+    public init(_ placeholder: String,
                 text: Binding<String>,
                 helperText: Binding<String> = .constant(""),
                 helperStyle: Binding<M7TextFieldHelperStyle> = .constant(.none),
