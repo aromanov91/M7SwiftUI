@@ -25,12 +25,12 @@ public class M7Colors {
         
         /// Medium Emphasis
         public static var mediumEmphasis: Color {
-            return ApperanceManager.shared.apperance?.onPrimaryMediumEmphasis ?? Color.white
+            return ApperanceManager.shared.apperance?.onPrimaryMediumEmphasis ?? Color.white.opacity(0.7)
         }
         
         /// Disabled
         public static var disabled: Color {
-            return ApperanceManager.shared.apperance?.onPrimaryDisabled ?? Color.gray
+            return ApperanceManager.shared.apperance?.onPrimaryDisabled ?? Color.gray.opacity(0.4)
         }
     }
     
@@ -39,17 +39,17 @@ public class M7Colors {
         
         /// High Emphasis
         public static var primary: Color {
-            return ApperanceManager.shared.apperance?.backgroundPrimary ?? Color.white
+            return ApperanceManager.shared.apperance?.backgroundPrimary ?? Color.black.opacity(0.97)
         }
         
         /// Medium Emphasis
         public static var secondary: Color {
-            return ApperanceManager.shared.apperance?.backgroundSecondary ?? Color.white
+            return ApperanceManager.shared.apperance?.backgroundSecondary ?? Color.black.opacity(0.95)
         }
         
         /// Disabled
         public static var tertiary: Color {
-            return ApperanceManager.shared.apperance?.backgroundTertiary ?? Color.gray
+            return ApperanceManager.shared.apperance?.backgroundTertiary ?? Color.black.opacity(0.90)
         }
     }
     
@@ -58,17 +58,17 @@ public class M7Colors {
         
         /// High Emphasis
         public static var highEmphasis: Color {
-            return ApperanceManager.shared.apperance?.onBackgroundHighEmphasis ?? Color.white
+            return ApperanceManager.shared.apperance?.onBackgroundHighEmphasis ?? Color.black.opacity(0.95)
         }
         
         /// Medium Emphasis
         public static var mediumEmphasis: Color {
-            return ApperanceManager.shared.apperance?.onBackgroundMediumEmphasis ?? Color.white
+            return ApperanceManager.shared.apperance?.onBackgroundMediumEmphasis ?? Color.black.opacity(0.75)
         }
         
         /// Disabled
         public static var disabled: Color {
-            return ApperanceManager.shared.apperance?.onBackgroundDisabled ?? Color.gray
+            return ApperanceManager.shared.apperance?.onBackgroundDisabled ?? Color.black.opacity(0.60)
         }
     }
 
@@ -96,17 +96,17 @@ public class M7Colors {
         
         /// High Emphasis
         public static var highEmphasis: Color {
-            return ApperanceManager.shared.apperance?.onSurfaceHighEmphasis ?? Color.white
+            return ApperanceManager.shared.apperance?.onSurfaceHighEmphasis ?? Color.black.opacity(0.90)
         }
         
         /// Medium Emphasis
         public static var mediumEmphasis: Color {
-            return ApperanceManager.shared.apperance?.onSurfaceMediumEmphasis ?? Color.white
+            return ApperanceManager.shared.apperance?.onSurfaceMediumEmphasis ?? Color.black.opacity(0.75)
         }
         
         /// Disabled
         public static var disabled: Color {
-            return ApperanceManager.shared.apperance?.onSurfaceDisabled ?? Color.gray
+            return ApperanceManager.shared.apperance?.onSurfaceDisabled ?? Color.black.opacity(0.60)
         }
     }
     
